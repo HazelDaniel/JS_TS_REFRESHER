@@ -59,3 +59,23 @@ const newObj: {
 } = {
 	role: [Role.ADMIN, "admin"],
 }
+
+
+//unions
+
+const newFunc = (firstItem: string | number, secondItem: string | number): void => {
+	if(typeof firstItem === "number") {
+		console.log("passed in number : " + firstItem);
+		if (typeof secondItem === "number")
+			console.log("and number : " + secondItem);
+	}
+	else {
+		console.log("passed in string : " + firstItem);
+		if (typeof secondItem === "string")
+		console.log("and string : " + secondItem);
+	}
+}
+
+newFunc(1, "hey");
+newFunc(8, 100);
+newFunc("joy", "hazel");

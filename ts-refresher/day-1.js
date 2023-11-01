@@ -25,3 +25,42 @@ console.log(list);
 // addToStrList("home :", "victoria");
 // addToStrList("home :", "vic@toria.com");
 console.log(strList);
+//tuples
+var someObj = {
+    role: [1, "admin"]
+};
+//caught by tsc
+// someObj.role[0] = "2";
+// uncaught by tsc because there is no way for
+// it to know the number of times your function/method is being called
+someObj.role.push(100);
+//works
+someObj.role = [20, "read-only user"];
+//caught by tsc
+// someObj.role = [];
+// enums
+var Role;
+(function (Role) {
+    Role[Role["ADMIN"] = 0] = "ADMIN";
+    Role[Role["READ_ONLY_USER"] = 1] = "READ_ONLY_USER";
+})(Role || (Role = {}));
+;
+var newObj = {
+    role: [Role.ADMIN, "admin"]
+};
+//unions
+var newFunc = function (firstItem, secondItem) {
+    if (typeof firstItem === "number") {
+        console.log("passed in number : " + firstItem);
+        if (typeof secondItem === "number")
+            console.log("and number : " + secondItem);
+    }
+    else {
+        console.log("passed in string : " + firstItem);
+        if (typeof secondItem === "string")
+            console.log("and string : " + secondItem);
+    }
+};
+newFunc(1, "hey");
+newFunc(8, 100);
+newFunc("joy", "hazel");
